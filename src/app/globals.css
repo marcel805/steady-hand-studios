@@ -1,26 +1,130 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Ink — sampled from the SHS wordmark (#10342C) */
+  --ink: #10342c;
+  --ink-2: #0b2420;
+  --ink-soft: #2f4f47;
+
+  /* Paper — a sage-tinted stone, built from the ink family rather than
+     a neutral cream, so light sections stay in the brand's own gamut. */
+  --paper: #edefe6;
+  --paper-2: #f7f7f0;
+  --card: #fbfbf5;
+
+  /* Gold — the wordmark's pale gold, deepened for AA text/CTA contrast on paper */
+  --gold-pale: #f5deab;
+  --gold: #b3801f;
+  --gold-ink: #8a6316;
+
+  /* Burnt orange — sampled from the embroidered patch badge; reserved
+     for the jobs portal's stamped status marks. */
+  --stamp: #d9600a;
+  --stamp-ink: #a3470a;
+
+  --rule: rgba(16, 52, 44, 0.16);
+  --rule-on-ink: rgba(245, 222, 171, 0.28);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-soft: var(--ink-soft);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-card: var(--card);
+  --color-gold-pale: var(--gold-pale);
+  --color-gold: var(--gold);
+  --color-gold-ink: var(--gold-ink);
+  --color-stamp: var(--stamp);
+  --color-stamp-ink: var(--stamp-ink);
+
+  --font-display: var(--font-display);
+  --font-stencil: var(--font-stencil);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--rule);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--gold-pale);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--stamp);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---- Registration marks --------------------------------------------
+   Steady Hand's signature device: corner alignment ticks borrowed from
+   the workshop's own world — the crosshairs used to register material
+   before a cut. Applied to photos, tickets and section frames. */
+.reg-marks {
+  position: relative;
+}
+.reg-marks::before,
+.reg-marks::after,
+.reg-marks > .reg-tl,
+.reg-marks > .reg-tr {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  z-index: 10;
+  pointer-events: none;
+}
+.reg-marks::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+}
+.reg-marks::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+.reg-marks > .reg-tl {
+  top: -1px;
+  right: -1px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+.reg-marks > .reg-tr {
+  bottom: -1px;
+  left: -1px;
+  border-bottom: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+}
+
+.text-stamp {
+  font-family: var(--font-stencil);
+  letter-spacing: 0.06em;
+}
+
+.text-mono-label {
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
