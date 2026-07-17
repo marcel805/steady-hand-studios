@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import SectionLabel from "@/components/SectionLabel";
 import StatusStamp, { JobStatus } from "@/components/StatusStamp";
 import { StatusButtons, AwardButton } from "@/components/admin/JobStatusControls";
+import JobFiles from "@/components/JobFiles";
 
 export default async function AdminJobDetailPage({
   params,
@@ -26,6 +27,12 @@ export default async function AdminJobDetailPage({
     .eq("job_id", id)
     .order("created_at", { ascending: true });
 
+  const { data: files } = await supabase
+    .from("job_files")
+    .select("id, file_name, file_path, size_bytes")
+    .eq("job_id", id)
+    .order("created_at", { ascending: true });
+
   return (
     <div>
       <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
@@ -44,6 +51,11 @@ export default async function AdminJobDetailPage({
       <div className="mb-10">
         <SectionLabel label="Status" />
         <StatusButtons jobId={job.id} currentStatus={job.status} />
+      </div>
+
+      <div className="mb-10">
+        <SectionLabel label={`Files (${files?.length ?? 0})`} />
+        <JobFiles jobId={job.id} files={files ?? []} canManage />
       </div>
 
       <div>

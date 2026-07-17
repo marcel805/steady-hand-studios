@@ -2,21 +2,18 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createContractor } from "@/app/admin/actions";
+import { createNdaRequest } from "@/app/admin/actions";
 
-export default function CreateContractorForm() {
+export default function CreateNdaRequestForm() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<{
-    email: string;
-    password: string;
-  } | null>(null);
+  const [link, setLink] = useState<string | null>(null);
 
   async function handleSubmit(formData: FormData) {
     setSubmitting(true);
     setError(null);
-    const res = await createContractor(formData);
+    const res = await createNdaRequest(formData);
     setSubmitting(false);
 
     if (res.error) {
@@ -24,35 +21,26 @@ export default function CreateContractorForm() {
       return;
     }
 
-    setResult({ email: res.email!, password: res.password! });
+    setLink(`${window.location.origin}/nda/${res.token}`);
     router.refresh();
   }
 
-  if (result) {
+  if (link) {
     return (
       <div className="rounded-lg border border-stamp/40 bg-card p-6">
-        <p className="text-mono-label text-stamp-ink">Login created</p>
+        <p className="text-mono-label text-stamp-ink">NDA link created</p>
         <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-          Send these to {result.email}{" "}
-          yourself (WhatsApp, call, whatever) -
-          this is the only time the password is shown. They&rsquo;ll be
-          asked to set their own on first login.
+          Send this link to them yourself (WhatsApp, email, whatever). Once
+          they&rsquo;ve signed it, come back here to create their login.
         </p>
-        <dl className="mt-4 space-y-2 text-sm">
-          <div className="flex gap-2">
-            <dt className="text-ink-soft">Email</dt>
-            <dd className="text-ink">{result.email}</dd>
-          </div>
-          <div className="flex gap-2">
-            <dt className="text-ink-soft">Password</dt>
-            <dd className="font-mono text-ink">{result.password}</dd>
-          </div>
-        </dl>
+        <p className="mt-4 break-all rounded-md border border-ink/15 bg-paper-2 px-3 py-2 font-mono text-sm text-ink">
+          {link}
+        </p>
         <button
-          onClick={() => setResult(null)}
+          onClick={() => setLink(null)}
           className="text-mono-label mt-5 text-xs text-ink underline hover:no-underline"
         >
-          Create another
+          Send another
         </button>
       </div>
     );
@@ -106,7 +94,7 @@ export default function CreateContractorForm() {
         disabled={submitting}
         className="text-mono-label rounded-full bg-ink px-6 py-3 text-xs text-paper-2 transition-colors hover:bg-ink-soft disabled:opacity-60"
       >
-        {submitting ? "Creating…" : "Create login"}
+        {submitting ? "Creating…" : "Create NDA link"}
       </button>
     </form>
   );

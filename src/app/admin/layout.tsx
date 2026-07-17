@@ -45,6 +45,12 @@ export default async function AdminLayout({
           </p>
           <nav className="flex items-center gap-5">
             <Link
+              href="/admin/nda"
+              className="text-mono-label text-xs text-ink hover:text-gold-ink"
+            >
+              NDAs
+            </Link>
+            <Link
               href="/admin/contractors"
               className="text-mono-label text-xs text-ink hover:text-gold-ink"
             >

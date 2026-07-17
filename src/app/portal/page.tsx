@@ -61,7 +61,7 @@ export default async function PortalPage() {
     );
   }
 
-  const [{ data: jobs }, { data: nominations }, { data: counts }] =
+  const [{ data: jobs }, { data: nominations }, { data: counts }, { data: files }] =
     await Promise.all([
       supabase
         .from("jobs")
@@ -74,17 +74,22 @@ export default async function PortalPage() {
         .select("job_id")
         .eq("contractor_id", user.id),
       supabase.rpc("job_nomination_counts"),
+      supabase.from("job_files").select("id, job_id, file_name, file_path, size_bytes"),
     ]);
 
   const myNominatedJobIds = new Set(
     (nominations ?? []).map((n) => n.job_id)
   );
-  const countByJobId = new Map(
+  const countByJobId = new Map<string, number>(
     (counts ?? []).map((c: { job_id: string; count: number }) => [
       c.job_id,
       c.count,
     ])
   );
+  const filesByJobId = new Map<string, NonNullable<typeof files>>();
+  for (const f of files ?? []) {
+    filesByJobId.set(f.job_id, [...(filesByJobId.get(f.job_id) ?? []), f]);
+  }
 
   const portalJobs: PortalJob[] = (jobs ?? []).map((j) => ({
     id: j.id,
@@ -99,6 +104,12 @@ export default async function PortalPage() {
     status: j.status as JobStatus,
     nominationCount: countByJobId.get(j.id) ?? 0,
     alreadyNominated: myNominatedJobIds.has(j.id),
+    files: (filesByJobId.get(j.id) ?? []).map((f) => ({
+      id: f.id,
+      file_name: f.file_name,
+      file_path: f.file_path,
+      size_bytes: f.size_bytes,
+    })),
   }));
 
   return (

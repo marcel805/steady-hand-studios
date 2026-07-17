@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import StatusStamp, { JobStatus } from "@/components/StatusStamp";
+import JobFiles, { JobFile } from "@/components/JobFiles";
 
 export type PortalJob = {
   id: string;
@@ -18,6 +19,7 @@ export type PortalJob = {
   status: JobStatus;
   nominationCount: number;
   alreadyNominated: boolean;
+  files: JobFile[];
 };
 
 export default function JobsBoard({
@@ -113,6 +115,11 @@ export default function JobsBoard({
                     <dd>{job.nominationCount}</dd>
                   </div>
                 </dl>
+                {job.files.length > 0 && (
+                  <div className="mt-4 max-w-md">
+                    <JobFiles jobId={job.id} files={job.files} />
+                  </div>
+                )}
               </div>
 
               <div className="shrink-0 sm:pt-1">
