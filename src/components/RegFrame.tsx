@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 /**
- * Wraps media in the studio's registration-mark corners — the alignment
+ * Wraps media in the studio's registration-mark corners - the alignment
  * ticks used to register material before a cut. `color` sets the mark
  * color (usually gold-pale on dark image backgrounds, ink on paper).
  */

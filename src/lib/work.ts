@@ -16,7 +16,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     category: "Brand activation",
     location: "Cape Town coastline",
     description:
-      "A coral-pink service cart for beachside pours — wheeled, weatherproofed and finished to match the brand's palette exactly. Built for a season of sand, salt air and daily moves across the beach.",
+      "A coral-pink service cart for beachside pours - wheeled, weatherproofed and finished to match the brand's palette exactly. Built for a season of sand, salt air and daily moves across the beach.",
     images: [
       {
         src: "/work/ice-tropez-cart.jpg",
@@ -31,7 +31,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     category: "Retail fit-out & signage",
     location: "Johannesburg",
     description:
-      "A rounded, fluted MDF bar counter with the Teremana wordmark cut straight through the panel and backlit — shown here mid-build in the shop, then finished and glowing on site.",
+      "A rounded, fluted MDF bar counter with the Teremana wordmark cut straight through the panel and backlit - shown here mid-build in the shop, then finished and glowing on site.",
     images: [
       {
         src: "/work/teremana-counter-wip.jpg",
@@ -65,7 +65,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     category: "Design & concept",
     location: "Studio",
     description:
-      "Every build starts as a model, not a guess — dimensions, materials and hardware signed off in 3D before the CNC ever runs. This navy-and-brass bar cart is one of ours, still on the drawing board.",
+      "Every build starts as a model, not a guess - dimensions, materials and hardware signed off in 3D before the CNC ever runs. This navy-and-brass bar cart is one of ours, still on the drawing board.",
     images: [
       {
         src: "/work/bar-cart-concept.jpg",

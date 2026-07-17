@@ -29,9 +29,9 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Steady Hand Studios — Fabrication Studio, Johannesburg",
+  title: "Steady Hand Studios - Fabrication Studio, Johannesburg",
   description:
-    "Steady Hand Studios builds custom fabrication, signage and brand activations from our Johannesburg workshop — from concept sketch to on-site install.",
+    "Steady Hand Studios builds custom fabrication, signage and brand activations from our Johannesburg workshop - from concept sketch to on-site install.",
 };
 
 export default function RootLayout({

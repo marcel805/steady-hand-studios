@@ -32,7 +32,7 @@ const PROCESS = [
   {
     step: "02",
     name: "Fabricate",
-    detail: "Cut, welded, sprayed and assembled in our Johannesburg workshop — crew sized to the job.",
+    detail: "Cut, welded, sprayed and assembled in our Johannesburg workshop - crew sized to the job.",
   },
   {
     step: "03",
@@ -44,12 +44,12 @@ const PROCESS = [
 export default function Home() {
   return (
     <>
-      {/* HERO — a work-order header, not a headline-on-gradient */}
+      {/* HERO - a work-order header, not a headline-on-gradient */}
       <section className="border-b border-ink/10 bg-paper">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 pt-10 pb-16 sm:px-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:pt-14">
           <div className="flex flex-col justify-center">
             <p className="text-mono-label mb-6 text-xs text-ink-soft">
-              Job No. SHS-2026 — Johannesburg, ZA
+              Job No. SHS-2026 - Johannesburg, ZA
             </p>
             <h1 className="font-display text-5xl leading-[0.92] tracking-tight text-ink sm:text-6xl lg:text-7xl">
               We build the
@@ -62,7 +62,7 @@ export default function Home() {
             </h1>
             <p className="mt-7 max-w-md text-base leading-relaxed text-ink-soft">
               Steady Hand Studios is a fabrication workshop in Johannesburg.
-              Carts, counters, signage, props — if it has to be built once,
+              Carts, counters, signage, props - if it has to be built once,
               built right, and built on time, it comes through our shop.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -93,7 +93,7 @@ export default function Home() {
               />
               <div className="absolute bottom-0 left-0 flex items-center gap-2 bg-ink/90 px-4 py-2">
                 <span className="text-mono-label text-[11px] text-gold-pale">
-                  Ice Tropez — beach service cart
+                  Ice Tropez - beach service cart
                 </span>
               </div>
             </div>
@@ -120,7 +120,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROCESS — a real sequence, so numbering earns its place */}
+      {/* PROCESS - a real sequence, so numbering earns its place */}
       <section className="border-b border-ink/10 bg-paper py-20">
         <div className="mx-auto max-w-7xl px-6 sm:px-10">
           <SectionLabel label="How a job moves through the shop" />
@@ -166,7 +166,7 @@ export default function Home() {
                 />
               </div>
               <p className="text-mono-label mt-3 text-[11px] text-paper-2/60">
-                Teremana — fluted counter, in the shop
+                Teremana - fluted counter, in the shop
               </p>
             </RegFrame>
             <RegFrame color="text-gold-pale/60">
@@ -180,7 +180,7 @@ export default function Home() {
                 />
               </div>
               <p className="text-mono-label mt-3 text-[11px] text-paper-2/60">
-                Teremana — illuminated signage, on site
+                Teremana - illuminated signage, on site
               </p>
             </RegFrame>
           </div>
@@ -195,7 +195,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WORK WITH US — no job specifics here, this is a public page */}
+      {/* WORK WITH US - no job specifics here, this is a public page */}
       <section className="bg-paper py-20">
         <div className="mx-auto max-w-7xl px-6 sm:px-10">
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
@@ -207,7 +207,7 @@ export default function Home() {
                 hands. Send us yours.
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-ink-soft">
-                Welders, sprayers, riggers, drivers, CNC operators — we bring
+                Welders, sprayers, riggers, drivers, CNC operators - we bring
                 tradespeople onto builds as we need them. Send your
                 portfolio and, if it&rsquo;s a fit, we&rsquo;ll set you up
                 with a login to our contractor portal.

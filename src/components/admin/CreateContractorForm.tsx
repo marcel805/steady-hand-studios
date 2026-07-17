@@ -34,7 +34,7 @@ export default function CreateContractorForm() {
         <p className="text-mono-label text-stamp-ink">Login created</p>
         <p className="mt-3 text-sm leading-relaxed text-ink-soft">
           Send these to {result.email}{" "}
-          yourself (WhatsApp, call, whatever) —
+          yourself (WhatsApp, call, whatever) -
           this is the only time the password is shown. They&rsquo;ll be
           asked to set their own on first login.
         </p>

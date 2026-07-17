@@ -3,7 +3,7 @@ import SectionLabel from "@/components/SectionLabel";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact — Steady Hand Studios",
+  title: "Contact - Steady Hand Studios",
   description:
     "Get in touch with Steady Hand Studios, a fabrication workshop in Johannesburg.",
 };

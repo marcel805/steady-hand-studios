@@ -4,7 +4,7 @@ import SectionLabel from "@/components/SectionLabel";
 import PortfolioCTA from "@/components/PortfolioCTA";
 
 export const metadata: Metadata = {
-  title: "Work with us — Steady Hand Studios",
+  title: "Work with us - Steady Hand Studios",
   description:
     "Steady Hand Studios brings tradespeople onto builds job by job. Send your portfolio to get vetted and set up with a portal login.",
 };
@@ -20,7 +20,7 @@ const STEPS = [
     step: "02",
     name: "We review it",
     detail:
-      "We look at fit for the kind of builds we run — steel, wood, spray, rigging, driving. No reply yet doesn't mean no; we keep portfolios on file.",
+      "We look at fit for the kind of builds we run - steel, wood, spray, rigging, driving. No reply yet doesn't mean no; we keep portfolios on file.",
   },
   {
     step: "03",
@@ -52,7 +52,7 @@ export default function CareersPage() {
           <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft">
             Steady Hand Studios brings welders, sprayers, riggers, drivers
             and CNC operators onto builds as we need them. We don&rsquo;t
-            run an open jobs board — every tradesperson who gets access to
+            run an open jobs board - every tradesperson who gets access to
             our portal is vetted first.
           </p>
           <div className="mt-8">

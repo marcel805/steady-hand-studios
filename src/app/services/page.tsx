@@ -5,7 +5,7 @@ import SectionLabel from "@/components/SectionLabel";
 import RegFrame from "@/components/RegFrame";
 
 export const metadata: Metadata = {
-  title: "Services — Steady Hand Studios",
+  title: "Services - Steady Hand Studios",
   description:
     "Fabrication services from Steady Hand Studios: brand activations, signage, retail fit-out, props and set builds, designed and built in Johannesburg.",
 };
@@ -20,7 +20,7 @@ const SERVICES = [
   {
     name: "Signage & lettering",
     detail:
-      "Illuminated, fretwork and dimensional lettering — cut, wired and finished in-house, then installed at height or at street level.",
+      "Illuminated, fretwork and dimensional lettering - cut, wired and finished in-house, then installed at height or at street level.",
     spec: "Acrylic, LED, aluminium, MDF",
   },
   {
@@ -32,7 +32,7 @@ const SERVICES = [
   {
     name: "Props & set builds",
     detail:
-      "One-off pieces for shoots, stages and live events — often on a short brief and a shorter timeline.",
+      "One-off pieces for shoots, stages and live events - often on a short brief and a shorter timeline.",
     spec: "Mixed materials, rapid turnaround",
   },
 ];
@@ -60,7 +60,7 @@ export default function ServicesPage() {
             </h1>
             <p className="mt-6 max-w-md text-base leading-relaxed text-ink-soft">
               We take on the builds that don&rsquo;t fit a supplier
-              catalogue — usually because they&rsquo;re one of one. Below is
+              catalogue - usually because they&rsquo;re one of one. Below is
               what that tends to look like, but if your job doesn&rsquo;t
               fit a category, that&rsquo;s normal too.
             </p>
@@ -76,7 +76,7 @@ export default function ServicesPage() {
               />
               <div className="absolute bottom-0 left-0 flex items-center gap-2 bg-ink/90 px-4 py-2">
                 <span className="text-mono-label text-[11px] text-gold-pale">
-                  Concept stage — before it hits the shop floor
+                  Concept stage - before it hits the shop floor
                 </span>
               </div>
             </div>

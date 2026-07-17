@@ -58,7 +58,7 @@ export default function JobsBoard({
       setError(
         insertError.code === "23505"
           ? "You've already nominated yourself for this one."
-          : "Something went wrong sending that — try again."
+          : "Something went wrong sending that - try again."
       );
       return;
     }

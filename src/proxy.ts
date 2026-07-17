@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 // Refreshes the Supabase auth session cookie on every request so server
 // components see an up-to-date session. Real route protection for
-// /portal and /admin happens in those routes/layouts themselves — this
+// /portal and /admin happens in those routes/layouts themselves - this
 // only keeps sessions alive, per Next.js's own guidance not to rely on
 // Proxy as the authorization layer.
 export async function proxy(request: NextRequest) {

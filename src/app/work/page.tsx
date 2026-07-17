@@ -5,7 +5,7 @@ import RegFrame from "@/components/RegFrame";
 import { CASE_STUDIES } from "@/lib/work";
 
 export const metadata: Metadata = {
-  title: "Work — Steady Hand Studios",
+  title: "Work - Steady Hand Studios",
   description:
     "Case studies from the Steady Hand Studios workshop: Ice Tropez, Teremana and other builds, from concept to on-site install.",
 };
@@ -36,7 +36,7 @@ export default function WorkPage() {
             <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:items-start">
               <div>
                 <p className="text-mono-label text-xs text-gold-ink">
-                  {cs.client} — {cs.location}
+                  {cs.client} - {cs.location}
                 </p>
                 <h2 className="mt-3 font-display text-4xl leading-tight text-ink">
                   {cs.title}

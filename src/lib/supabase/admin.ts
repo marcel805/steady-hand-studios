@@ -1,7 +1,7 @@
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 
 /**
- * Admin-privileged Supabase client — uses the service role key, which
+ * Admin-privileged Supabase client - uses the service role key, which
  * bypasses row-level security entirely. Server-only: never import this
  * from a Client Component, and never send SUPABASE_SERVICE_ROLE_KEY to
  * the browser. Used for actions like creating a contractor's login,

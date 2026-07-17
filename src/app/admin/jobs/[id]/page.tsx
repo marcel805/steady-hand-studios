@@ -63,7 +63,7 @@ export default async function AdminJobDetailPage({
                 <div>
                   <p className="text-ink">{contractor.name}</p>
                   <p className="text-mono-label text-[11px] text-ink-soft">
-                    {contractor.trade ?? "—"} · {contractor.email}{" "}
+                    {contractor.trade ?? "-"} · {contractor.email}{" "}
                     {contractor.phone ? `· ${contractor.phone}` : ""}
                   </p>
                   {n.note && (

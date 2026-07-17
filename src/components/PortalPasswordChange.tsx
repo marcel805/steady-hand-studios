@@ -65,7 +65,7 @@ export default function PortalPasswordChange({
         Set your own password.
       </h1>
       <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-        You&rsquo;re logging in with a password we set for you — replace it
+        You&rsquo;re logging in with a password we set for you - replace it
         with your own before you go any further.
       </p>
 

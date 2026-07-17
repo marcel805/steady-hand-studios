@@ -8,7 +8,7 @@ import JobsBoard, { PortalJob } from "@/components/JobsBoard";
 import { JobStatus } from "@/components/StatusStamp";
 
 export const metadata: Metadata = {
-  title: "Portal — Steady Hand Studios",
+  title: "Portal - Steady Hand Studios",
   description: "Login for vetted Steady Hand Studios contractors.",
   robots: { index: false, follow: false },
 };
@@ -109,7 +109,7 @@ export default async function PortalPage() {
       </div>
       {portalJobs.length === 0 ? (
         <p className="text-sm text-ink-soft">
-          Nothing posted right now — check back soon.
+          Nothing posted right now - check back soon.
         </p>
       ) : (
         <JobsBoard jobs={portalJobs} contractorId={user.id} />

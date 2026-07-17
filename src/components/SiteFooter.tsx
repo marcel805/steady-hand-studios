@@ -16,8 +16,8 @@ export default function SiteFooter() {
             />
             <p className="max-w-sm text-sm leading-relaxed text-paper-2/70">
               A fabrication studio in Johannesburg. We build the physical
-              things brands need — activations, signage, props and
-              installs — from first sketch to on-site handover.
+              things brands need - activations, signage, props and
+              installs - from first sketch to on-site handover.
             </p>
           </div>
 

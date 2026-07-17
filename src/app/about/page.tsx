@@ -5,7 +5,7 @@ import SectionLabel from "@/components/SectionLabel";
 import RegFrame from "@/components/RegFrame";
 
 export const metadata: Metadata = {
-  title: "About — Steady Hand Studios",
+  title: "About - Steady Hand Studios",
   description:
     "Steady Hand Studios is a fabrication workshop in Johannesburg, built around a crew that can turn a brief into a physical build fast.",
 };
@@ -41,7 +41,7 @@ export default function AboutPage() {
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft">
             Steady Hand Studios started as the people brands call when the
-            thing they need doesn&rsquo;t exist yet — no catalogue, no
+            thing they need doesn&rsquo;t exist yet - no catalogue, no
             supplier, just a reference photo and a deadline. We&rsquo;re
             based in Johannesburg and we build for clients across the
             country.
@@ -67,8 +67,8 @@ export default function AboutPage() {
             <p className="max-w-md text-base leading-relaxed text-ink-soft">
               Most of what we build starts as a sketch or a mood board and
               ends as something with weight, wiring and a delivery address.
-              The people who make that jump — welders, sprayers, joiners,
-              riggers — are the studio. Some are on staff; a lot come on for
+              The people who make that jump - welders, sprayers, joiners,
+              riggers - are the studio. Some are on staff; a lot come on for
               a specific build once we&rsquo;ve vetted them.
             </p>
             <Link

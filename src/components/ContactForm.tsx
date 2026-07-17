@@ -10,7 +10,7 @@ export default function ContactForm() {
   const mailtoHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
     `New brief from ${form.name || "the website"}`
   )}&body=${encodeURIComponent(
-    `${form.brief}\n\n—\n${form.name}\n${form.email}`
+    `${form.brief}\n\n-\n${form.name}\n${form.email}`
   )}`;
 
   return (
@@ -18,7 +18,7 @@ export default function ContactForm() {
       className="space-y-4"
       onSubmit={(e) => {
         e.preventDefault();
-        // Opens the visitor's own mail client with the brief pre-filled —
+        // Opens the visitor's own mail client with the brief pre-filled -
         // there's no backend on this site to receive submissions directly.
         window.location.href = mailtoHref;
       }}
@@ -64,7 +64,7 @@ export default function ContactForm() {
         Open in email
       </button>
       <p className="text-mono-label text-[11px] text-ink-soft">
-        Opens your email app with this pre-filled — nothing sends
+        Opens your email app with this pre-filled - nothing sends
         automatically.
       </p>
     </form>

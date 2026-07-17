@@ -38,7 +38,7 @@ export default async function AdminJobsPage() {
         ))}
         {(!jobs || jobs.length === 0) && (
           <p className="text-sm text-ink-soft">
-            No jobs posted yet — use &ldquo;Post a job&rdquo; above.
+            No jobs posted yet - use &ldquo;Post a job&rdquo; above.
           </p>
         )}
       </div>

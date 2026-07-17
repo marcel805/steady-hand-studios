@@ -41,7 +41,7 @@ export default async function AdminContractorsPage() {
           ))}
           {(!contractors || contractors.length === 0) && (
             <p className="p-5 text-sm text-ink-soft">
-              No contractors yet — create the first one above.
+              No contractors yet - create the first one above.
             </p>
           )}
         </div>
