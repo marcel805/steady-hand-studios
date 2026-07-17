@@ -7,7 +7,7 @@ import { CASE_STUDIES } from "@/lib/work";
 export const metadata: Metadata = {
   title: "Work - Steady Hand Studios",
   description:
-    "Case studies from the Steady Hand Studios workshop: Ice Tropez, Teremana and other builds, from concept to on-site install.",
+    "Case studies from the Steady Hand Studios workshop: Jagermeister Orange, Ice Tropez, Teremana and other builds, from concept to on-site install.",
 };
 
 export default function WorkPage() {

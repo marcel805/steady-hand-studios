@@ -54,8 +54,8 @@ export default function AboutPage() {
           <RegFrame color="text-ink/40">
             <div className="relative h-80 overflow-hidden bg-ink-2 sm:h-[420px]">
               <Image
-                src="/work/led-shelving-crew.jpg"
-                alt="Steady Hand Studios crew building a steel display frame with red LED edge lighting in the workshop"
+                src="/work/crew-teremana.jpg"
+                alt="Three Steady Hand Studios crew members working together on the fluted Teremana counter in the workshop"
                 fill
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 className="object-cover"

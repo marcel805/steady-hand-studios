@@ -84,8 +84,8 @@ export default function Home() {
           <RegFrame color="text-ink/50" className="self-stretch">
             <div className="relative h-full min-h-[320px] overflow-hidden bg-ink-2 lg:min-h-[520px]">
               <Image
-                src="/work/ice-tropez-cart.jpg"
-                alt="A coral-pink branded beverage cart built by Steady Hand Studios for Ice Tropez, on a beach"
+                src="/work/jager-bar.jpg"
+                alt="A full-length branded festival bar built by Steady Hand Studios for Jagermeister Orange, staffed and serving a queue of customers"
                 fill
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 className="object-cover"
@@ -93,7 +93,7 @@ export default function Home() {
               />
               <div className="absolute bottom-0 left-0 flex items-center gap-2 bg-ink/90 px-4 py-2">
                 <span className="text-mono-label text-[11px] text-gold-pale">
-                  Ice Tropez - beach service cart
+                  Jagermeister Orange - festival bar
                 </span>
               </div>
             </div>
@@ -158,29 +158,29 @@ export default function Home() {
             <RegFrame color="text-gold-pale/60">
               <div className="relative h-72 overflow-hidden bg-ink-2 sm:h-96">
                 <Image
-                  src="/work/teremana-counter-wip.jpg"
-                  alt="A fluted MDF bar counter with the Teremana logo cut into it, mid-build in the SHS workshop"
+                  src="/work/teremana-workshop-finished.jpg"
+                  alt="The fluted, backlit Teremana counter getting finishing touches from the crew in the workshop"
                   fill
                   sizes="(min-width: 640px) 50vw, 100vw"
                   className="object-cover"
                 />
               </div>
               <p className="text-mono-label mt-3 text-[11px] text-paper-2/60">
-                Teremana - fluted counter, in the shop
+                Teremana - finishing touches, in the shop
               </p>
             </RegFrame>
             <RegFrame color="text-gold-pale/60">
               <div className="relative h-72 overflow-hidden bg-ink-2 sm:h-96">
                 <Image
-                  src="/work/teremana-sign.jpg"
-                  alt="An illuminated Teremana sign, backlit, installed on site"
+                  src="/work/jager-bowling.jpg"
+                  alt="A custom Jagermeister Orange mini bowling lane set up outdoors at a festival"
                   fill
                   sizes="(min-width: 640px) 50vw, 100vw"
                   className="object-cover"
                 />
               </div>
               <p className="text-mono-label mt-3 text-[11px] text-paper-2/60">
-                Teremana - illuminated signage, on site
+                Jagermeister Orange - festival bowling lane
               </p>
             </RegFrame>
           </div>
