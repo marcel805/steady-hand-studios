@@ -86,3 +86,17 @@ create policy "contractors can nominate themselves" on nominations
   for insert with check (auth.uid() = contractor_id);
 create policy "admins manage nominations" on nominations
   for all using (is_admin());
+
+-- Migration: track which contractor won a job.
+alter table jobs add column if not exists awarded_to uuid references contractors (id);
+
+-- Migration: let any logged-in contractor see nomination *counts* per job
+-- (not who nominated — RLS still hides other contractors' individual rows).
+create or replace function job_nomination_counts()
+returns table(job_id uuid, count bigint)
+language sql
+security definer
+stable
+as $$
+  select job_id, count(*) from nominations group by job_id;
+$$;

@@ -1,36 +1,81 @@
 "use client";
 
 import { useState } from "react";
-import { Job } from "@/lib/jobs";
-import StatusStamp from "@/components/StatusStamp";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
+import StatusStamp, { JobStatus } from "@/components/StatusStamp";
 
-export default function JobsBoard({ jobs }: { jobs: Job[] }) {
-  const [openTicket, setOpenTicket] = useState<string | null>(null);
-  const [nominated, setNominated] = useState<Set<string>>(new Set());
-  const [form, setForm] = useState({ name: "", contact: "", note: "" });
+export type PortalJob = {
+  id: string;
+  ticket: string;
+  title: string;
+  trade: string;
+  location: string;
+  dayRate: string;
+  duration: string;
+  callDate: string;
+  brief: string;
+  status: JobStatus;
+  nominationCount: number;
+  alreadyNominated: boolean;
+};
 
-  function startNomination(ticket: string) {
-    setOpenTicket(ticket);
-    setForm({ name: "", contact: "", note: "" });
+export default function JobsBoard({
+  jobs,
+  contractorId,
+}: {
+  jobs: PortalJob[];
+  contractorId: string;
+}) {
+  const router = useRouter();
+  const supabase = createClient();
+
+  const [openJobId, setOpenJobId] = useState<string | null>(null);
+  const [note, setNote] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  function startNomination(jobId: string) {
+    setOpenJobId(jobId);
+    setNote("");
+    setError(null);
   }
 
-  function submitNomination(e: React.FormEvent) {
+  async function submitNomination(e: React.FormEvent, job: PortalJob) {
     e.preventDefault();
-    if (!openTicket) return;
-    setNominated((prev) => new Set(prev).add(openTicket));
-    setOpenTicket(null);
+    setSubmitting(true);
+    setError(null);
+
+    const { error: insertError } = await supabase.from("nominations").insert({
+      job_id: job.id,
+      contractor_id: contractorId,
+      note: note || null,
+    });
+
+    setSubmitting(false);
+
+    if (insertError) {
+      setError(
+        insertError.code === "23505"
+          ? "You've already nominated yourself for this one."
+          : "Something went wrong sending that — try again."
+      );
+      return;
+    }
+
+    setOpenJobId(null);
+    router.refresh();
   }
 
   return (
     <div className="space-y-4">
       {jobs.map((job) => {
-        const isNominated = nominated.has(job.ticket);
         const isOpen = job.status === "open";
-        const formOpenHere = openTicket === job.ticket;
+        const formOpenHere = openJobId === job.id;
 
         return (
           <div
-            key={job.ticket}
+            key={job.id}
             className="rounded-md border border-ink/12 bg-card"
           >
             <div className="flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:justify-between">
@@ -63,12 +108,10 @@ export default function JobsBoard({ jobs }: { jobs: Job[] }) {
                     <dt className="text-ink-soft">Timing</dt>
                     <dd>{job.callDate}</dd>
                   </div>
-                  {typeof job.nominees === "number" && (
-                    <div className="flex gap-2">
-                      <dt className="text-ink-soft">Nominations</dt>
-                      <dd>{job.nominees + (isNominated ? 1 : 0)}</dd>
-                    </div>
-                  )}
+                  <div className="flex gap-2">
+                    <dt className="text-ink-soft">Nominations</dt>
+                    <dd>{job.nominationCount}</dd>
+                  </div>
                 </dl>
               </div>
 
@@ -77,13 +120,13 @@ export default function JobsBoard({ jobs }: { jobs: Job[] }) {
                   <span className="text-mono-label text-[11px] text-ink-soft">
                     Nominations closed
                   </span>
-                ) : isNominated ? (
+                ) : job.alreadyNominated ? (
                   <span className="text-stamp inline-flex -rotate-2 items-center rounded-sm border-[2.5px] border-ink px-2.5 py-1 text-[11px] text-ink">
                     You&rsquo;re on the ticket
                   </span>
                 ) : (
                   <button
-                    onClick={() => startNomination(job.ticket)}
+                    onClick={() => startNomination(job.id)}
                     className="text-mono-label rounded-full bg-ink px-5 py-2.5 text-xs text-paper-2 transition-colors hover:bg-ink-soft"
                   >
                     Nominate yourself
@@ -94,66 +137,42 @@ export default function JobsBoard({ jobs }: { jobs: Job[] }) {
 
             {formOpenHere && (
               <form
-                onSubmit={submitNomination}
+                onSubmit={(e) => submitNomination(e, job)}
                 className="border-t border-ink/10 bg-paper-2 p-6"
               >
                 <p className="text-mono-label mb-4 text-[11px] text-ink-soft">
                   Nominate yourself for {job.ticket}
                 </p>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <label className="block text-sm">
-                    <span className="mb-1.5 block text-ink-soft">
-                      Your name
-                    </span>
-                    <input
-                      required
-                      value={form.name}
-                      onChange={(e) =>
-                        setForm((f) => ({ ...f, name: e.target.value }))
-                      }
-                      className="w-full rounded-md border border-ink/20 bg-card px-3 py-2 text-ink outline-none focus-visible:border-ink"
-                      placeholder="Full name"
-                    />
-                  </label>
-                  <label className="block text-sm">
-                    <span className="mb-1.5 block text-ink-soft">
-                      Phone or email
-                    </span>
-                    <input
-                      required
-                      value={form.contact}
-                      onChange={(e) =>
-                        setForm((f) => ({ ...f, contact: e.target.value }))
-                      }
-                      className="w-full rounded-md border border-ink/20 bg-card px-3 py-2 text-ink outline-none focus-visible:border-ink"
-                      placeholder="082 000 0000"
-                    />
-                  </label>
-                </div>
-                <label className="mt-4 block text-sm">
+                <label className="block text-sm">
                   <span className="mb-1.5 block text-ink-soft">
                     Anything we should know? (optional)
                   </span>
                   <textarea
-                    value={form.note}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, note: e.target.value }))
-                    }
+                    value={note}
+                    onChange={(e) => setNote(e.target.value)}
                     rows={2}
                     className="w-full rounded-md border border-ink/20 bg-card px-3 py-2 text-ink outline-none focus-visible:border-ink"
-                    placeholder="Relevant tickets, availability, past work"
+                    placeholder="Relevant experience, availability, anything specific to this job"
                   />
                 </label>
+
+                {error && (
+                  <p className="mt-3 text-sm text-stamp-ink" role="alert">
+                    {error}
+                  </p>
+                )}
+
                 <div className="mt-5 flex flex-wrap items-center gap-4">
                   <button
                     type="submit"
-                    className="text-mono-label rounded-full bg-stamp px-5 py-2.5 text-xs text-paper-2 transition-colors hover:bg-stamp-ink"
+                    disabled={submitting}
+                    className="text-mono-label rounded-full bg-stamp px-5 py-2.5 text-xs text-paper-2 transition-colors hover:bg-stamp-ink disabled:opacity-60"
                   >
-                    Send nomination
+                    {submitting ? "Sending…" : "Send nomination"}
                   </button>
                   <button
                     type="button"
-                    onClick={() => setOpenTicket(null)}
+                    onClick={() => setOpenJobId(null)}
                     className="text-mono-label text-xs text-ink-soft hover:text-ink"
                   >
                     Cancel
