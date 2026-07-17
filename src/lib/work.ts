@@ -42,12 +42,16 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Started as one coral-pink service cart for beachside pours. Grew into a full immersive entrance build - a sculptural glowing tunnel, produce displays and lounge furniture - for the brand's anniversary event.",
     images: [
       {
-        src: "/work/ice-tropez-tunnel.jpg",
-        alt: "A large sculptural glowing tunnel entrance branded Ice Tropez, with produce displays and straw umbrellas at an indoor event",
-      },
-      {
         src: "/work/ice-tropez-cart.jpg",
         alt: "The original Ice Tropez cart on a beach under a palm tree, coral pink with a neon-lit sign",
+      },
+      {
+        src: "/work/ice-tropez-counter.jpg",
+        alt: "A minimal coral Ice Tropez counter with a debossed logo plaque, set up on a white-tiled event floor",
+      },
+      {
+        src: "/work/ice-tropez-tunnel.jpg",
+        alt: "A large sculptural glowing tunnel entrance branded Ice Tropez, with produce displays and straw umbrellas at an indoor event",
       },
     ],
   },
