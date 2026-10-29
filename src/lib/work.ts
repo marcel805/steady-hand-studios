@@ -35,7 +35,7 @@ export const PROJECTS: Project[] = [
     summary:
       "A rounded counter in vertical slats, with the lettering cut straight through the face. Built and finished in the workshop, then edge-lit.",
     materials: "MDF slats, solid-surface top, LED edge-lighting",
-    cover: { src: "/work/teremana-post.jpg" },
+    cover: { src: "/work/teremana-on-site.jpg" },
     images: [
       {
         src: "/work/teremana-during.jpg",
@@ -48,6 +48,27 @@ export const PROJECTS: Project[] = [
         src: "/work/teremana-post.jpg",
         alt: "The finished Teremana counter, sprayed navy with an illuminated logo and a lit white top, with the crew checking the fit",
         caption: "Finished, sprayed and lit",
+        w: 1800,
+        h: 1350,
+      },
+      {
+        src: "/work/teremana-on-site.jpg",
+        alt: "The finished blue fluted Teremana bar counter on paving outside, with a white top and illuminated lettering",
+        caption: "On site",
+        w: 1800,
+        h: 1350,
+      },
+      {
+        src: "/work/teremana-detail.jpg",
+        alt: "Close-up of the lit Teremana lettering and diamond emblem on the fluted counter",
+        caption: "The lettering, lit",
+        w: 1800,
+        h: 1350,
+      },
+      {
+        src: "/work/teremana-icewell.jpg",
+        alt: "Detail of the Teremana counter top with a recessed stainless well set into the white solid-surface",
+        caption: "A stainless well set into the top",
         w: 1800,
         h: 1350,
       },
@@ -89,11 +110,11 @@ export const PROJECTS: Project[] = [
   {
     slug: "astral-tequila",
     client: "Astral Tequila",
-    title: "Astral Tequila\nentrance arch",
-    type: "Entrance arch",
+    title: "Astral Tequila\narch and bars",
+    type: "Arch, bars and back unit",
     summary:
-      "A freestanding arch in powder blue with a brass edge, relief lettering and a cut-out sun, built in sections and edge-lit.",
-    materials: "Sprayed board, brass-finish trim, LED edge-lighting",
+      "A freestanding arch in powder blue with a brass edge, relief lettering and a cut-out sun, built in sections and edge-lit. Alongside it, a blue bar counter patterned with constellations and a timber bar with a shelved back unit.",
+    materials: "Sprayed board, timber, brass-finish trim, LED edge-lighting",
     cover: { src: "/work/astral-lit.jpg" },
     images: [
       {
@@ -109,6 +130,27 @@ export const PROJECTS: Project[] = [
         caption: "Finished, in the workshop",
         w: 1800,
         h: 1350,
+      },
+      {
+        src: "/work/astral-bar-blue.jpg",
+        alt: "A blue Astral Tequila bar counter with a constellation pattern and an arched cut-out, in the workshop",
+        caption: "The blue bar counter",
+        w: 1800,
+        h: 1350,
+      },
+      {
+        src: "/work/astral-bar-timber.jpg",
+        alt: "A timber-clad Astral Tequila bar with the logo on the front and a white top, in the workshop",
+        caption: "The timber bar",
+        w: 1350,
+        h: 1800,
+      },
+      {
+        src: "/work/astral-bar-shelf.jpg",
+        alt: "The timber Astral Tequila bar with a back unit of black-framed shelves, seen from the side, in the workshop",
+        caption: "Bar and back unit",
+        w: 1350,
+        h: 1800,
       },
     ],
   },
@@ -207,6 +249,20 @@ export const PROJECTS: Project[] = [
         w: 960,
         h: 1280,
       },
+      {
+        src: "/work/icetropez-cart-stage.jpg",
+        alt: "The Ice Tropez cart on a lit stage in a hall, with a picket fence and a glowing screen behind it",
+        caption: "The cart, indoors",
+        w: 1800,
+        h: 1350,
+      },
+      {
+        src: "/work/icetropez-hall-wide.jpg",
+        alt: "A wide view of the Ice Tropez event space, with the glowing tunnel entrance, picket fence and lounge area",
+        caption: "A wider view",
+        w: 1800,
+        h: 1350,
+      },
     ],
   },
   {
@@ -265,7 +321,7 @@ export const PROJECTS: Project[] = [
     title: "Jägermeister Orange\nlaunch tour",
     type: "Brand activation",
     summary:
-      "A full branded bar with lit shelving and menu boards, a working mini bowling lane, and a reupholstered lounge sofa trimmed in neon: three different builds for the same events.",
+      "A full branded bar with lit shelving and menu boards, a working mini bowling lane, and a reupholstered lounge sofa trimmed in neon, plus a photo-op, a table-tennis table and branded stands: a run of different builds for the same events.",
     cover: { src: "/work/jager-bar.jpg" },
     images: [
       {
@@ -278,16 +334,63 @@ export const PROJECTS: Project[] = [
       {
         src: "/work/jager-bowling.jpg",
         alt: "A custom Jägermeister Orange mini bowling lane set up outdoors at a festival, with branded pins and ball",
-        caption: "The bowling lane",
+        caption: "The bowling lane, on site",
         w: 900,
         h: 1600,
       },
       {
-        src: "/work/jager-sofa.jpg",
-        alt: "A reupholstered Victorian-style loveseat in orange velvet, trimmed with neon-orange LED edge lighting",
-        caption: "The sofa",
+        src: "/work/jager-lane-workshop.jpg",
+        alt: "The custom orange Jägermeister Orange bowling lane in the workshop, with branded pins, a bottle and an orange ball",
+        caption: "The lane, in the workshop",
         w: 960,
         h: 1280,
+      },
+      {
+        src: "/work/jager-sofa-orange.jpg",
+        alt: "A reupholstered Victorian-style sofa in orange velvet with a white carved frame, in the workshop",
+        caption: "The sofa, in the workshop",
+        w: 1350,
+        h: 1800,
+      },
+      {
+        src: "/work/jager-photo-op.jpg",
+        alt: "A circular Jägermeister Orange photo-op in a venue, an orange ring with greenery behind it and the words I'm in my orange era",
+        caption: "The photo-op, on site",
+        w: 1012,
+        h: 1800,
+      },
+      {
+        src: "/work/jager-table.jpg",
+        alt: "A custom orange table-tennis table with a net, set up in a showroom",
+        caption: "The table-tennis table",
+        w: 1800,
+        h: 1350,
+      },
+      {
+        src: "/work/jager-orange-era.jpg",
+        alt: "An orange stand topped with a half-orange sign lettered The Orange Era, with a box counter below, in the workshop",
+        caption: "The Orange Era stand",
+        w: 1350,
+        h: 1800,
+      },
+    ],
+  },
+  {
+    slug: "red-bull-cabinet",
+    client: "Red Bull",
+    title: "Red Bull\ncabinet",
+    type: "Branded cabinet",
+    summary:
+      "A timber cabinet for a Red Bull mini fridge, with the logo laser-engraved into the wood and a perforated metal side panel.",
+    materials: "Timber, laser-engraved logo, perforated metal panel",
+    cover: { src: "/work/redbull-cabinet.jpg" },
+    images: [
+      {
+        src: "/work/redbull-cabinet.jpg",
+        alt: "A timber cabinet with the Red Bull logo engraved on the front and a perforated metal side panel",
+        caption: "The finished cabinet",
+        w: 1350,
+        h: 1800,
       },
     ],
   },

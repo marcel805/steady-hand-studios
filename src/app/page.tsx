@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import Stripe from "@/components/Stripe";
+import HeroSlides, { HeroSlide } from "@/components/HeroSlides";
 import ProjectIndex from "@/components/ProjectIndex";
 import { PROJECTS, getProject, plateNumber } from "@/lib/work";
 
@@ -21,15 +21,36 @@ const RULES = [
   },
 ];
 
-const HERO_SLUG = "astral-tequila";
+// Pictures the homepage rotates through: [project slug, image index, crop].
+const HERO_PICKS: [string, number, string?][] = [
+  ["astral-tequila", 0],
+  ["banana-beach-red-bull", 0, "center 55%"],
+  ["teremana", 2],
+  ["luxurious-marble-circus", 1],
+  ["zyn", 0],
+  ["jagermeister-orange", 4],
+  ["fyz", 0],
+  ["ice-tropez", 0, "78% center"],
+];
+
+const HERO_SLIDES: HeroSlide[] = HERO_PICKS.map(([slug, n, position]) => {
+  const p = getProject(slug)!;
+  const img = p.images[n];
+  return {
+    src: img.src,
+    alt: img.alt,
+    href: `/work/${p.slug}`,
+    plate: plateNumber(p.slug),
+    label: `${p.client} / ${p.type}`,
+    position,
+  };
+});
 
 export default function Home() {
-  const hero = getProject(HERO_SLUG)!;
-
   return (
     <>
       {/* HERO */}
-      <section className="grid lg:h-[clamp(640px,calc(100vh-76px),820px)] lg:grid-cols-[1.05fr_1fr]">
+      <section className="grid lg:min-h-[clamp(640px,calc(100vh-76px),820px)] lg:grid-cols-[1.05fr_1fr]">
         <div className="on-green flex flex-col justify-between gap-12 bg-green px-6 py-14 text-bone sm:px-10 lg:py-16 lg:pl-[max(2.5rem,calc((100vw-1360px)/2+2.5rem))] lg:pr-14">
           <div className="flex items-center gap-4">
             <span className="roundel">01</span>
@@ -68,40 +89,8 @@ export default function Home() {
           <Stripe />
         </div>
 
-        <Link
-          href={`/work/${hero.slug}`}
-          className="group relative block min-h-[70vw] bg-green-2 lg:min-h-0"
-        >
-          <Image
-            src={hero.cover.src}
-            alt={hero.images[0].alt}
-            fill
-            priority
-            sizes="(min-width: 1024px) 48vw, 100vw"
-            className="object-cover"
-          />
-          <span className="cap absolute bottom-0 left-0 flex items-center gap-4 bg-bone px-5 py-3 text-sm">
-            <span className="num text-orange-ink">
-              Plate {plateNumber(hero.slug)}
-            </span>
-            {hero.client} / {hero.type}
-          </span>
-        </Link>
+        <HeroSlides slides={HERO_SLIDES} />
       </section>
-
-      {/* CLIENTS */}
-      <div className="bg-ink text-bone">
-        <div className="disp mx-auto flex max-w-[1360px] flex-wrap items-center justify-center gap-x-10 gap-y-2 px-6 py-5 text-2xl tracking-[0.08em] sm:px-10">
-          {["Teremana", "Astral Tequila", "ZYN", "Red Bull", "Ice Tropez", "FYZ", "Jägermeister"].map(
-            (c, i) => (
-              <span key={c} className="flex items-center gap-10">
-                {i > 0 && <span className="text-orange">/</span>}
-                {c}
-              </span>
-            )
-          )}
-        </div>
-      </div>
 
       {/* INDEX OF WORK */}
       <section className="py-20 lg:py-28">
