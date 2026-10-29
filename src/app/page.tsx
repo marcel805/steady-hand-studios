@@ -1,226 +1,158 @@
 import Image from "next/image";
 import Link from "next/link";
-import SectionLabel from "@/components/SectionLabel";
-import RegFrame from "@/components/RegFrame";
-import PortfolioCTA from "@/components/PortfolioCTA";
+import Stripe from "@/components/Stripe";
+import ProjectIndex from "@/components/ProjectIndex";
+import { PROJECTS, getProject, plateNumber } from "@/lib/work";
 
-const SERVICES = [
+const RULES = [
   {
-    name: "Brand activations",
-    detail: "Carts, bars, kiosks and stunt builds for launches and pop-ups.",
-  },
-  {
-    name: "Signage & lettering",
-    detail: "Illuminated, fretwork and dimensional signage, made and installed.",
-  },
-  {
-    name: "Retail & event fit-out",
-    detail: "Counters, shelving and fixtures, built to drawing and deadline.",
-  },
-  {
-    name: "Props & set builds",
-    detail: "One-off pieces for shoots, stages and experiential work.",
-  },
-];
-
-const PROCESS = [
-  {
-    step: "01",
     name: "Brief",
-    detail: "We take your drawing, reference or half-formed idea and scope what it takes to build it.",
+    detail:
+      "We take your drawing, reference or idea and scope what it takes to build it.",
   },
   {
-    step: "02",
     name: "Fabricate",
-    detail: "Cut, welded, sprayed and assembled in our Johannesburg workshop - crew sized to the job.",
+    detail:
+      "Cut, welded, sprayed and assembled in our Johannesburg workshop, with a crew sized to the job.",
   },
   {
-    step: "03",
     name: "Install",
     detail: "Delivered and fitted on site, on the date it needs to exist.",
   },
 ];
 
+const HERO_SLUG = "astral-tequila";
+
 export default function Home() {
+  const hero = getProject(HERO_SLUG)!;
+
   return (
     <>
-      {/* HERO - a work-order header, not a headline-on-gradient */}
-      <section className="border-b border-ink/10 bg-paper">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 pt-10 pb-16 sm:px-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:pt-14">
-          <div className="flex flex-col justify-center">
-            <p className="text-mono-label mb-6 text-xs text-ink-soft">
-              Job No. SHS-2026 - Johannesburg, ZA
-            </p>
-            <h1 className="font-display text-5xl leading-[0.92] tracking-tight text-ink sm:text-6xl lg:text-7xl">
-              We build the
+      {/* HERO */}
+      <section className="grid lg:h-[clamp(640px,calc(100vh-76px),820px)] lg:grid-cols-[1.05fr_1fr]">
+        <div className="on-green flex flex-col justify-between gap-12 bg-green px-6 py-14 text-bone sm:px-10 lg:py-16 lg:pl-[max(2.5rem,calc((100vw-1360px)/2+2.5rem))] lg:pr-14">
+          <div className="flex items-center gap-4">
+            <span className="roundel">01</span>
+            <span className="cap text-sm text-cream">
+              Fabrication / Johannesburg
+            </span>
+          </div>
+
+          <div>
+            <h1 className="disp text-[clamp(4.25rem,9vw,9.5rem)] text-bone">
+              Built once.
               <br />
-              things brands
-              <br />
-              can&rsquo;t buy off
-              <br />
-              a shelf.
+              <span className="text-orange">Built right.</span>
             </h1>
-            <p className="mt-7 max-w-md text-base leading-relaxed text-ink-soft">
-              Steady Hand Studios is a fabrication workshop in Johannesburg.
-              Carts, counters, signage, props - if it has to be built once,
-              built right, and built on time, it comes through our shop.
+            <p className="mt-7 max-w-[34ch] text-xl leading-snug text-bone/80">
+              Counters, arches, signage and stands for brands that can&rsquo;t
+              buy them off a shelf, and custom furniture for the home. Drawn,
+              cut, finished and installed in one workshop.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-7 flex flex-wrap items-center gap-3">
               <Link
                 href="/work"
-                className="text-mono-label rounded-full bg-ink px-6 py-3 text-xs text-paper-2 transition-colors hover:bg-ink-soft"
+                className="cap rounded-[2px] bg-orange px-6 py-3.5 text-[15px] text-white transition-colors hover:bg-orange-ink"
               >
                 See the work
               </Link>
               <Link
-                href="/careers"
-                className="text-mono-label rounded-full border border-ink/30 px-6 py-3 text-xs text-ink transition-colors hover:border-ink"
+                href="/services"
+                className="cap rounded-[2px] border-[1.5px] border-cream px-6 py-3 text-[15px] text-cream transition-colors hover:bg-cream hover:text-green"
               >
-                Work with us
+                Our method
               </Link>
             </div>
           </div>
 
-          <RegFrame color="text-ink/50" className="self-stretch">
-            <div className="relative h-full min-h-[320px] overflow-hidden bg-ink-2 lg:min-h-[520px]">
-              <Image
-                src="/work/jager-bar.jpg"
-                alt="A full-length branded festival bar built by Steady Hand Studios for Jagermeister Orange, staffed and serving a queue of customers"
-                fill
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="object-cover"
-                priority
-              />
-              <div className="absolute bottom-0 left-0 flex items-center gap-2 bg-ink/90 px-4 py-2">
-                <span className="text-mono-label text-[11px] text-gold-pale">
-                  Jagermeister Orange - festival bar
-                </span>
-              </div>
-            </div>
-          </RegFrame>
+          <Stripe />
         </div>
+
+        <Link
+          href={`/work/${hero.slug}`}
+          className="group relative block min-h-[70vw] bg-green-2 lg:min-h-0"
+        >
+          <Image
+            src={hero.cover.src}
+            alt={hero.images[0].alt}
+            fill
+            priority
+            sizes="(min-width: 1024px) 48vw, 100vw"
+            className="object-cover"
+          />
+          <span className="cap absolute bottom-0 left-0 flex items-center gap-4 bg-bone px-5 py-3 text-sm">
+            <span className="num text-orange-ink">
+              Plate {plateNumber(hero.slug)}
+            </span>
+            {hero.client} / {hero.type}
+          </span>
+        </Link>
       </section>
 
-      {/* SERVICES */}
-      <section className="border-b border-ink/10 bg-paper-2 py-20">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10">
-          <SectionLabel label="What we build" />
-          <div className="grid gap-px overflow-hidden rounded-lg border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
-            {SERVICES.map((s) => (
-              <div key={s.name} className="bg-paper-2 p-7">
-                <h3 className="font-display text-2xl leading-tight text-ink">
-                  {s.name}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-                  {s.detail}
-                </p>
-              </div>
-            ))}
-          </div>
+      {/* CLIENTS */}
+      <div className="bg-ink text-bone">
+        <div className="disp mx-auto flex max-w-[1360px] flex-wrap items-center justify-center gap-x-10 gap-y-2 px-6 py-5 text-2xl tracking-[0.08em] sm:px-10">
+          {["Teremana", "Astral Tequila", "ZYN", "Red Bull", "Ice Tropez", "FYZ", "Jägermeister"].map(
+            (c, i) => (
+              <span key={c} className="flex items-center gap-10">
+                {i > 0 && <span className="text-orange">/</span>}
+                {c}
+              </span>
+            )
+          )}
         </div>
-      </section>
+      </div>
 
-      {/* PROCESS - a real sequence, so numbering earns its place */}
-      <section className="border-b border-ink/10 bg-paper py-20">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10">
-          <SectionLabel label="How a job moves through the shop" />
-          <div className="grid gap-10 lg:grid-cols-3">
-            {PROCESS.map((p, i) => (
-              <div key={p.step} className="relative">
-                <span className="text-mono-label text-xs text-gold-ink">
-                  {p.step}
-                </span>
-                <h3 className="mt-3 font-display text-3xl text-ink">
-                  {p.name}
-                </h3>
-                <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-soft">
-                  {p.detail}
-                </p>
-                {i < PROCESS.length - 1 && (
-                  <span
-                    aria-hidden
-                    className="absolute right-[-1.25rem] top-1 hidden text-ink/25 lg:block"
-                  >
-                    →
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED WORK */}
-      <section className="border-b border-ink/10 bg-ink py-20 text-paper-2">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10">
-          <SectionLabel label="From the workshop floor" tone="paper" />
-          <div className="grid gap-8 sm:grid-cols-2">
-            <RegFrame color="text-gold-pale/60">
-              <div className="relative h-72 overflow-hidden bg-ink-2 sm:h-96">
-                <Image
-                  src="/work/teremana-workshop-finished.jpg"
-                  alt="The fluted, backlit Teremana counter getting finishing touches from the crew in the workshop"
-                  fill
-                  sizes="(min-width: 640px) 50vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-              <p className="text-mono-label mt-3 text-[11px] text-paper-2/60">
-                Teremana - finishing touches, in the shop
-              </p>
-            </RegFrame>
-            <RegFrame color="text-gold-pale/60">
-              <div className="relative h-72 overflow-hidden bg-ink-2 sm:h-96">
-                <Image
-                  src="/work/jager-bowling.jpg"
-                  alt="A custom Jagermeister Orange mini bowling lane set up outdoors at a festival"
-                  fill
-                  sizes="(min-width: 640px) 50vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-              <p className="text-mono-label mt-3 text-[11px] text-paper-2/60">
-                Jagermeister Orange - festival bowling lane
-              </p>
-            </RegFrame>
-          </div>
-          <div className="mt-10">
+      {/* INDEX OF WORK */}
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto max-w-[1360px] px-6 sm:px-10">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+            <h2 className="disp text-6xl sm:text-7xl lg:text-8xl">
+              Index of work
+            </h2>
             <Link
               href="/work"
-              className="text-mono-label border-b border-gold-pale/40 pb-1 text-xs text-gold-pale hover:border-gold-pale"
+              className="cap border-b-2 border-orange pb-1 text-sm hover:text-orange-ink"
             >
-              See the full body of work →
+              {`All ${PROJECTS.length} plates`} &rarr;
             </Link>
+          </div>
+          <ProjectIndex projects={PROJECTS.slice(0, 6)} />
+        </div>
+      </section>
+
+      {/* METHOD */}
+      <section className="bg-paper-2 py-20 lg:py-28">
+        <div className="mx-auto max-w-[1360px] px-6 sm:px-10">
+          <h2 className="disp mb-10 text-6xl sm:text-7xl">Three rules</h2>
+          <div className="grid border-t-[3px] border-ink md:grid-cols-3">
+            {RULES.map((r, i) => (
+              <div
+                key={r.name}
+                className="border-b border-ink/25 py-7 md:border-b-0 md:border-r md:pr-8 md:last:border-r-0 md:[&:not(:first-child)]:pl-8"
+              >
+                <span className="roundel mb-5">{i + 1}</span>
+                <h3 className="disp text-5xl">{r.name}</h3>
+                <p className="mt-3 max-w-[32ch] text-ink-soft">{r.detail}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* WORK WITH US - no job specifics here, this is a public page */}
-      <section className="bg-paper py-20">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
-            <div>
-              <SectionLabel label="Work with us" />
-              <h2 className="font-display text-4xl leading-[0.95] text-ink sm:text-5xl">
-                Every build needs
-                <br />
-                hands. Send us yours.
-              </h2>
-              <p className="mt-5 max-w-md text-sm leading-relaxed text-ink-soft">
-                Welders, sprayers, riggers, drivers, CNC operators - we bring
-                tradespeople onto builds as we need them. Send your
-                portfolio and, if it&rsquo;s a fit, we&rsquo;ll set you up
-                with a login to our contractor portal.
-              </p>
-              <Link
-                href="/careers"
-                className="text-mono-label mt-7 inline-block border-b border-ink/30 pb-1 text-xs text-ink hover:border-ink"
-              >
-                See how it works →
-              </Link>
-            </div>
-            <PortfolioCTA />
-          </div>
+      {/* CONTRACTORS - kept deliberately small; this site is for clients */}
+      <section className="border-t border-ink/20 py-10">
+        <div className="mx-auto flex max-w-[1360px] flex-wrap items-center justify-between gap-4 px-6 sm:px-10">
+          <p className="max-w-xl text-ink-soft">
+            Welders, sprayers, riggers, drivers and CNC operators: we bring
+            tradespeople onto builds as we need them.
+          </p>
+          <Link
+            href="/careers"
+            className="cap border-b-2 border-orange pb-1 text-sm hover:text-orange-ink"
+          >
+            Work with us &rarr;
+          </Link>
         </div>
       </section>
     </>

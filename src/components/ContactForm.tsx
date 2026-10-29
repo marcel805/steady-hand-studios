@@ -29,7 +29,7 @@ export default function ContactForm() {
           required
           value={form.name}
           onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-          className="w-full rounded-md border border-ink/20 bg-card px-3 py-2.5 text-ink outline-none focus-visible:border-ink"
+          className="w-full rounded-[2px] border border-ink/30 bg-paper-2 px-3 py-2.5 text-ink outline-none focus-visible:border-ink"
           placeholder="Full name"
         />
       </label>
@@ -40,7 +40,7 @@ export default function ContactForm() {
           type="email"
           value={form.email}
           onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-          className="w-full rounded-md border border-ink/20 bg-card px-3 py-2.5 text-ink outline-none focus-visible:border-ink"
+          className="w-full rounded-[2px] border border-ink/30 bg-paper-2 px-3 py-2.5 text-ink outline-none focus-visible:border-ink"
           placeholder="you@company.com"
         />
       </label>
@@ -53,17 +53,17 @@ export default function ContactForm() {
           rows={4}
           value={form.brief}
           onChange={(e) => setForm((f) => ({ ...f, brief: e.target.value }))}
-          className="w-full rounded-md border border-ink/20 bg-card px-3 py-2.5 text-ink outline-none focus-visible:border-ink"
+          className="w-full rounded-[2px] border border-ink/30 bg-paper-2 px-3 py-2.5 text-ink outline-none focus-visible:border-ink"
           placeholder="A sentence or two is plenty to start"
         />
       </label>
       <button
         type="submit"
-        className="text-mono-label rounded-full bg-ink px-6 py-3 text-xs text-paper-2 transition-colors hover:bg-ink-soft"
+        className="cap rounded-[2px] bg-orange px-7 py-3.5 text-[15px] text-white transition-colors hover:bg-orange-ink"
       >
         Open in email
       </button>
-      <p className="text-mono-label text-[11px] text-ink-soft">
+      <p className="text-sm text-ink-soft">
         Opens your email app with this pre-filled - nothing sends
         automatically.
       </p>

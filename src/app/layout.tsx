@@ -1,37 +1,25 @@
 import type { Metadata } from "next";
-import { Big_Shoulders, Big_Shoulders_Stencil, Inter, JetBrains_Mono } from "next/font/google";
+import { Barlow_Condensed, Barlow_Semi_Condensed } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
-const display = Big_Shoulders({
+const display = Barlow_Condensed({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["600", "700", "800", "900"],
+  weight: ["500", "600", "700", "800"],
 });
 
-const stencil = Big_Shoulders_Stencil({
-  variable: "--font-stencil",
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
-});
-
-const body = Inter({
+const body = Barlow_Semi_Condensed({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
 
-const mono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
-
 export const metadata: Metadata = {
   title: "Steady Hand Studios - Fabrication Studio, Johannesburg",
   description:
-    "Steady Hand Studios builds custom fabrication, signage and brand activations from our Johannesburg workshop - from concept sketch to on-site install.",
+    "Steady Hand Studios builds custom fabrication, signage, brand activations and custom home furniture from our Johannesburg workshop - from concept sketch to on-site install.",
 };
 
 export default function RootLayout({
@@ -42,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${stencil.variable} ${body.variable} ${mono.variable} h-full antialiased`}
+      className={`${display.variable} ${body.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
         <SiteHeader />

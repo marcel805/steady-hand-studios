@@ -23,13 +23,13 @@ export default function PortfolioCTA({
     <div>
       <a
         href={mailtoHref}
-        className="text-mono-label inline-block rounded-full bg-stamp px-6 py-3 text-xs text-paper-2 transition-colors hover:bg-stamp-ink"
+        className="cap inline-block rounded-[2px] bg-orange px-7 py-3.5 text-[15px] text-white transition-colors hover:bg-orange-ink"
       >
         {label}
       </a>
-      <p className="text-mono-label mt-3 text-[11px] text-ink-soft">
-        Opens your email app, addressed to {CONTACT_EMAIL} - attach a few
-        photos or a link to your work.
+      <p className="mt-3 text-sm text-current opacity-70">
+        Opens your email app, addressed to {CONTACT_EMAIL}. Attach a few photos
+        or a link to your work.
       </p>
     </div>
   );

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SectionLabel from "@/components/SectionLabel";
+import PageHeader from "@/components/PageHeader";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
@@ -10,39 +10,37 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="bg-paper py-16">
-      <div className="mx-auto max-w-7xl px-6 sm:px-10">
-        <p className="text-mono-label mb-6 text-xs text-ink-soft">
-          Get in touch
-        </p>
-        <h1 className="max-w-xl font-display text-5xl leading-[0.95] text-ink sm:text-6xl">
-          Tell us what needs building.
-        </h1>
+    <>
+      <PageHeader label="Get in touch" title="Tell us what needs building." />
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_1.2fr]">
+      <section className="py-16 lg:py-24">
+        <div className="mx-auto grid max-w-[1360px] gap-14 px-6 sm:px-10 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
           <div>
-            <SectionLabel label="Workshop" />
-            <p className="text-mono-label text-sm leading-relaxed text-ink">
-              Johannesburg, South Africa
-            </p>
+            <p className="cap mb-4 text-sm text-orange-ink">Workshop</p>
+            <p className="text-xl">Johannesburg, South Africa</p>
             <a
               href="mailto:info@steadyhandstudios.co.za"
-              className="text-mono-label mt-4 block text-sm text-ink hover:text-gold-ink"
+              className="mt-4 block text-xl underline underline-offset-4 hover:text-orange-ink"
             >
               info@steadyhandstudios.co.za
             </a>
             <a
               href="tel:+27664739575"
-              className="text-mono-label mt-1 block text-sm text-ink hover:text-gold-ink"
+              className="mt-1 block text-xl underline underline-offset-4 hover:text-orange-ink"
             >
               +27 66 473 9575
             </a>
 
-            <div className="mt-10">
-              <SectionLabel label="Looking for work instead?" />
-              <p className="text-sm leading-relaxed text-ink-soft">
+            <div className="mt-12 border-t-[3px] border-ink pt-5">
+              <p className="cap mb-3 text-sm text-orange-ink">
+                Looking for work instead?
+              </p>
+              <p className="text-ink-soft">
                 Head to{" "}
-                <a href="/careers" className="text-ink underline hover:no-underline">
+                <a
+                  href="/careers"
+                  className="text-ink underline underline-offset-4 hover:text-orange-ink"
+                >
                   Work with us
                 </a>{" "}
                 to send your portfolio.
@@ -50,11 +48,11 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="rounded-lg border border-ink/12 bg-card p-6 sm:p-8">
+          <div className="border-t-[3px] border-ink bg-card p-6 sm:p-8">
             <ContactForm />
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
