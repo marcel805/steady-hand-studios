@@ -41,64 +41,69 @@ export default function HeroSlides({ slides }: { slides: HeroSlide[] }) {
 
   return (
     <div
-      className="relative min-h-[70vw] overflow-hidden bg-green-2 lg:min-h-0"
+      className="flex flex-col bg-green-2"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
-      {slides.map((s, i) => (
-        <Image
-          key={s.src}
-          src={s.src}
-          alt={i === index ? s.alt : ""}
-          aria-hidden={i !== index}
-          fill
-          priority={i === 0}
-          sizes="(min-width: 1024px) 48vw, 100vw"
-          className={`object-cover transition-opacity duration-1000 ease-in-out ${
-            i === index ? "opacity-100" : "opacity-0"
-          }`}
-          style={{ objectPosition: s.position }}
+      {/* The picture. Nothing is laid over it, so no slide is ever cropped
+          by the caption. */}
+      <div className="relative min-h-[70vw] flex-1 overflow-hidden lg:min-h-0">
+        {slides.map((s, i) => (
+          <Image
+            key={s.src}
+            src={s.src}
+            alt={i === index ? s.alt : ""}
+            aria-hidden={i !== index}
+            fill
+            priority={i === 0}
+            sizes="(min-width: 1024px) 48vw, 100vw"
+            className={`object-cover transition-opacity duration-1000 ease-in-out ${
+              i === index ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ objectPosition: s.position }}
+          />
+        ))}
+
+        {/* The picture links to whichever plate is showing. */}
+        <Link
+          href={current.href}
+          aria-label={`View ${current.label}`}
+          className="absolute inset-0 z-10"
         />
-      ))}
+      </div>
 
-      {/* The picture links to whichever plate is showing. */}
-      <Link
-        href={current.href}
-        aria-label={`View ${current.label}`}
-        className="absolute inset-0 z-10"
-        tabIndex={0}
-      />
+      {/* One bar under the picture: caption on the left, markers on the right. */}
+      <div className="flex items-center justify-between gap-4 bg-bone px-5 py-3">
+        <p className="cap flex min-w-0 items-center gap-4 text-sm">
+          <span className="num shrink-0 text-orange-ink">
+            Plate {current.plate}
+          </span>
+          <span className="truncate">{current.label}</span>
+        </p>
 
-      <span
-        aria-hidden
-        className="cap pointer-events-none absolute bottom-0 left-0 z-20 flex max-w-[calc(100%-6.5rem)] items-center gap-4 bg-bone px-5 py-3 text-sm"
-      >
-        <span className="num shrink-0 text-orange-ink">Plate {current.plate}</span>
-        <span className="truncate">{current.label}</span>
-      </span>
-
-      {slides.length > 1 && (
-        <div className="absolute bottom-0 right-0 z-20 flex items-center gap-2 bg-bone px-4 py-3.5">
-          {slides.map((s, i) => (
-            <button
-              key={s.src}
-              type="button"
-              onClick={() => setIndex(i)}
-              aria-label={`Show ${s.label}`}
-              aria-current={i === index}
-              className="flex h-5 items-center px-0.5"
-            >
-              <span
-                className={`block h-1.5 w-3.5 transition-colors ${
-                  i === index ? "bg-orange" : "bg-ink/25 hover:bg-ink/50"
-                }`}
-              />
-            </button>
-          ))}
-        </div>
-      )}
+        {slides.length > 1 && (
+          <div className="flex shrink-0 items-center gap-2">
+            {slides.map((s, i) => (
+              <button
+                key={s.src}
+                type="button"
+                onClick={() => setIndex(i)}
+                aria-label={`Show ${s.label}`}
+                aria-current={i === index}
+                className="flex h-5 items-center px-0.5"
+              >
+                <span
+                  className={`block h-1.5 w-3.5 transition-colors ${
+                    i === index ? "bg-orange" : "bg-ink/25 hover:bg-ink/50"
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
