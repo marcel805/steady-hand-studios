@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  // The form only submits from the site once a mail service is configured
+  // (see src/app/api/contact/route.ts); until then it opens the visitor's
+  // email app, as before. Evaluated at build time, so redeploy after
+  // adding the key.
+  const canSubmit = Boolean(process.env.RESEND_API_KEY);
+
   return (
     <>
       <PageHeader label="Get in touch" title="Tell us what needs building." />
@@ -49,7 +55,7 @@ export default function ContactPage() {
           </div>
 
           <div className="border-t-[3px] border-ink bg-card p-6 sm:p-8">
-            <ContactForm />
+            <ContactForm canSubmit={canSubmit} />
           </div>
         </div>
       </section>

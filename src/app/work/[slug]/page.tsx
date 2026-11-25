@@ -54,13 +54,13 @@ export default async function PlatePage({
           <div>
             <Link
               href="/work"
-              className="cap text-sm text-cream hover:text-white"
+              className="cap inline-block py-2 text-sm text-cream hover:text-white"
             >
-              &larr; Index of work
+              &larr; All projects
             </Link>
             <div className="mt-8 flex items-center gap-4">
               <span className="roundel">{plateNumber(project.slug)}</span>
-              <span className="cap text-sm text-cream">Plate</span>
+              <span className="cap text-sm text-cream">Project</span>
             </div>
             <Stripe className="mt-8 max-w-[120px]" />
             <h1 className="disp mt-8 whitespace-pre-line text-6xl sm:text-7xl lg:text-8xl">
@@ -145,7 +145,7 @@ export default async function PlatePage({
           <div className="flex items-center gap-5">
             <span className="roundel">{plateNumber(next.slug)}</span>
             <div>
-              <p className="cap text-sm text-ink-soft">Next plate</p>
+              <p className="cap text-sm text-ink-soft">Next project</p>
               <p className="disp text-4xl sm:text-5xl">{next.client}</p>
             </div>
           </div>

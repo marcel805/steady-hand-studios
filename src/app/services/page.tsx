@@ -24,7 +24,7 @@ const SERVICES = [
   {
     name: "Retail & event fit-out",
     detail:
-      "Counters, shelving, POS fixtures and stand builds made to drawing, with the tolerances a retail environment actually needs.",
+      "Counters, shelving, branded cabinets, POS fixtures and stand builds made to drawing, with the tolerances a retail environment actually needs.",
     spec: "Joinery, laminate, spray finish",
   },
   {
@@ -32,12 +32,6 @@ const SERVICES = [
     detail:
       "One-off pieces for shoots, stages and live events, often on a short brief and a shorter timeline.",
     spec: "Mixed materials, rapid turnaround",
-  },
-  {
-    name: "Custom home furniture",
-    detail:
-      "Tables, shelving, cabinetry and other pieces for the home, made to measure and built to last.",
-    spec: "Joinery, timber, spray finish",
   },
 ];
 

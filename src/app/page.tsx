@@ -21,21 +21,23 @@ const RULES = [
   },
 ];
 
-// Pictures the homepage rotates through: [project slug, image index, crop].
-const HERO_PICKS: [string, number, string?][] = [
-  ["astral-tequila", 0],
-  ["banana-beach-red-bull", 0, "center 55%"],
-  ["teremana", 2],
-  ["luxurious-marble-circus", 1],
-  ["zyn", 0],
-  ["jagermeister-orange", 4],
-  ["fyz", 0],
-  ["ice-tropez", 0, "78% center"],
+// Pictures the homepage rotates through: [project slug, photo file, crop].
+// Photos are matched by file name so reordering a project's gallery can't
+// swap the hero picture.
+const HERO_PICKS: [string, string, string?][] = [
+  ["astral-tequila", "astral-lit.jpg"],
+  ["banana-beach-red-bull", "banana-beach.jpg", "center 55%"],
+  ["teremana", "teremana-on-site.jpg"],
+  ["luxurious-marble-circus", "circus-sign.jpg"],
+  ["zyn", "zyn-during.jpg"],
+  ["jagermeister-orange", "jager-photo-op.jpg"],
+  ["fyz", "fyz-box-lit.jpg"],
+  ["ice-tropez", "icetropez.jpg", "78% center"],
 ];
 
-const HERO_SLIDES: HeroSlide[] = HERO_PICKS.map(([slug, n, position]) => {
+const HERO_SLIDES: HeroSlide[] = HERO_PICKS.map(([slug, file, position]) => {
   const p = getProject(slug)!;
-  const img = p.images[n];
+  const img = p.images.find((i) => i.src.endsWith(`/${file}`))!;
   return {
     src: img.src,
     alt: img.alt,
@@ -50,7 +52,7 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="grid lg:min-h-[clamp(640px,calc(100vh-76px),820px)] lg:grid-cols-[1.05fr_1fr]">
+      <section className="grid grid-cols-[minmax(0,1fr)] lg:min-h-[clamp(640px,calc(100vh-76px),820px)] lg:grid-cols-[1.05fr_1fr]">
         <div className="on-green flex flex-col justify-between gap-12 bg-green px-6 py-14 text-bone sm:px-10 lg:py-16 lg:pl-[max(2.5rem,calc((100vw-1360px)/2+2.5rem))] lg:pr-14">
           <div className="flex items-center gap-4">
             <span className="roundel">01</span>
@@ -65,10 +67,9 @@ export default function Home() {
               <br />
               <span className="text-orange">Built right.</span>
             </h1>
-            <p className="mt-7 max-w-[34ch] text-xl leading-snug text-bone/80">
-              Counters, arches, signage and stands for brands that can&rsquo;t
-              buy them off a shelf, and custom furniture for the home. Drawn,
-              cut, finished and installed in one workshop.
+            <p className="mt-7 max-w-[30ch] text-[1.375rem] font-medium leading-snug text-bone sm:max-w-[36ch] sm:text-2xl">
+              We design, build and install custom bars, signage, stands and
+              brand activations from our Johannesburg workshop.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <Link
@@ -81,7 +82,7 @@ export default function Home() {
                 href="/services"
                 className="cap rounded-[2px] border-[1.5px] border-cream px-6 py-3 text-[15px] text-cream transition-colors hover:bg-cream hover:text-green"
               >
-                Our method
+                What we build
               </Link>
             </div>
           </div>
@@ -97,13 +98,13 @@ export default function Home() {
         <div className="mx-auto max-w-[1360px] px-6 sm:px-10">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
             <h2 className="disp text-6xl sm:text-7xl lg:text-8xl">
-              Index of work
+              Selected work
             </h2>
             <Link
               href="/work"
               className="cap border-b-2 border-orange pb-1 text-sm hover:text-orange-ink"
             >
-              {`All ${PROJECTS.length} plates`} &rarr;
+              View all projects &rarr;
             </Link>
           </div>
           <ProjectIndex projects={PROJECTS.slice(0, 6)} />

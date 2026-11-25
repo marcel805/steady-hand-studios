@@ -41,7 +41,7 @@ export default function HeroSlides({ slides }: { slides: HeroSlide[] }) {
 
   return (
     <div
-      className="flex flex-col bg-green-2"
+      className="flex min-w-0 flex-col bg-green-2"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -75,10 +75,10 @@ export default function HeroSlides({ slides }: { slides: HeroSlide[] }) {
       </div>
 
       {/* One bar under the picture: caption on the left, markers on the right. */}
-      <div className="flex items-center justify-between gap-4 bg-bone px-5 py-3">
+      <div className="flex items-center justify-between gap-4 bg-bone px-5 py-2">
         <p className="cap flex min-w-0 items-center gap-4 text-sm">
           <span className="num shrink-0 text-orange-ink">
-            Plate {current.plate}
+            Project {current.plate}
           </span>
           <span className="truncate">{current.label}</span>
         </p>
@@ -92,7 +92,7 @@ export default function HeroSlides({ slides }: { slides: HeroSlide[] }) {
                 onClick={() => setIndex(i)}
                 aria-label={`Show ${s.label}`}
                 aria-current={i === index}
-                className="flex h-5 items-center px-0.5"
+                className="flex h-7 items-center px-0.5"
               >
                 <span
                   className={`block h-1.5 w-3.5 transition-colors ${

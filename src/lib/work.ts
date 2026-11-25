@@ -38,9 +38,9 @@ export const PROJECTS: Project[] = [
     cover: { src: "/work/teremana-on-site.jpg" },
     images: [
       {
-        src: "/work/teremana-during.jpg",
-        alt: "The slatted Teremana counter in raw MDF in the workshop, with the lettering cut through the slats",
-        caption: "In the workshop, before finishing",
+        src: "/work/teremana-on-site.jpg",
+        alt: "The finished blue fluted Teremana bar counter on paving outside, with a white top and illuminated lettering",
+        caption: "On site",
         w: 1800,
         h: 1350,
       },
@@ -48,13 +48,6 @@ export const PROJECTS: Project[] = [
         src: "/work/teremana-post.jpg",
         alt: "The finished Teremana counter, sprayed navy with an illuminated logo and a lit white top, with the crew checking the fit",
         caption: "Finished, sprayed and lit",
-        w: 1800,
-        h: 1350,
-      },
-      {
-        src: "/work/teremana-on-site.jpg",
-        alt: "The finished blue fluted Teremana bar counter on paving outside, with a white top and illuminated lettering",
-        caption: "On site",
         w: 1800,
         h: 1350,
       },
@@ -69,6 +62,13 @@ export const PROJECTS: Project[] = [
         src: "/work/teremana-icewell.jpg",
         alt: "Detail of the Teremana counter top with a recessed stainless well set into the white solid-surface",
         caption: "A stainless well set into the top",
+        w: 1800,
+        h: 1350,
+      },
+      {
+        src: "/work/teremana-during.jpg",
+        alt: "The slatted Teremana counter in raw MDF in the workshop, with the lettering cut through the slats",
+        caption: "In the workshop, before finishing",
         w: 1800,
         h: 1350,
       },
@@ -89,21 +89,21 @@ export const PROJECTS: Project[] = [
     summary:
       "A DJ booth built from sliced birch-ply ribs that flow into one another, lit from beneath and set against a slatted feature wall.",
     materials: "Birch plywood, slatted timber, LED",
-    cover: { src: "/work/zyn-during.jpg" },
+    cover: { src: "/work/zyn-booth.jpg", position: "center 62%" },
     images: [
-      {
-        src: "/work/zyn-during.jpg",
-        alt: "The ZYN DJ booth in the workshop, a wave of sliced birch-ply ribs on a base board before it is lit",
-        caption: "In the workshop",
-        w: 1800,
-        h: 1350,
-      },
       {
         src: "/work/zyn-booth.jpg",
         alt: "The finished ZYN DJ booth in a venue, ribbed plywood with a lit ZYN logo, blue underglow, and a slatted wall with a screen behind it",
         caption: "On site",
         w: 1350,
         h: 1800,
+      },
+      {
+        src: "/work/zyn-during.jpg",
+        alt: "The ZYN DJ booth in the workshop, a wave of sliced birch-ply ribs on a base board before it is lit",
+        caption: "In the workshop",
+        w: 1800,
+        h: 1350,
       },
     ],
   },
@@ -273,20 +273,20 @@ export const PROJECTS: Project[] = [
     summary:
       "A lit photo booth with an open, warm-white interior and a wave-shaped entrance arch, both edged in blue LED.",
     materials: "Printed and sprayed board, LED edge-lighting",
-    cover: { src: "/work/fyz-box-lit.jpg" },
+    cover: { src: "/work/fyz-arch.jpg", position: "center 55%" },
     images: [
-      {
-        src: "/work/fyz-box-lit.jpg",
-        alt: "The FYZ photo booth in the workshop, edged in blue LED with a warm white open interior",
-        caption: "The booth, in the workshop",
-        w: 1350,
-        h: 1800,
-      },
       {
         src: "/work/fyz-arch.jpg",
         alt: "A wave-shaped blue FYZ entrance arch with neon edging and a blue carpet, flanked by potted palms",
         caption: "The arch, on site",
         w: 1012,
+        h: 1800,
+      },
+      {
+        src: "/work/fyz-box-lit.jpg",
+        alt: "The FYZ photo booth in the workshop, edged in blue LED with a warm white open interior",
+        caption: "The booth, in the workshop",
+        w: 1350,
         h: 1800,
       },
       {

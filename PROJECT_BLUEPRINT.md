@@ -2,7 +2,8 @@
 
 ## Purpose
 Steady Hand Studios (SHS) is a Johannesburg fabrication/build studio: bars,
-counters, arches, signage, props and custom home furniture. The website exists
+counters, arches, signage, stands, props and branded cabinets. (There is no
+home furniture department; keep it out of the copy.) The website exists
 for **clients to see our work**. Clients include Teremana, Astral Tequila, ZYN,
 FYZ, Red Bull, Ice Tropez, Jägermeister and others.
 
@@ -15,7 +16,12 @@ Work with us (send a portfolio by email), Contact.
 
 ## Tech stack
 - **Next.js 16** (App Router, Turbopack), **TypeScript**, **Tailwind CSS v4**
-- No database, no auth, no environment variables.
+- No database, no auth. One optional service: **Resend** sends the contact form
+  (`src/app/api/contact/route.ts`). Env vars, set in Vercel then redeploy:
+  `RESEND_API_KEY` (required to switch the form on), `CONTACT_TO_EMAIL`
+  (default info@steadyhandstudios.co.za), `CONTACT_FROM_EMAIL` (needs the
+  domain verified in Resend). Without the key the form falls back to opening
+  the visitor's email app.
 - **Vercel** hosting, custom domain `steadyhandstudios.co.za` (GoDaddy registrar,
   DNS A record → Vercel's `216.198.79.1`, root redirects to `www`)
 - **GitHub**: `github.com/marcel805/steady-hand-studios` — pushed via **GitHub

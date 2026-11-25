@@ -22,45 +22,45 @@ export default function SiteFooter() {
             </p>
           </div>
 
-          <ul className="cap space-y-2 text-sm text-bone/85">
+          <ul className="cap text-sm text-bone/85">
             <li>
-              <Link href="/work" className="hover:text-white">
+              <Link href="/work" className="inline-block py-1.5 hover:text-white">
                 Work
               </Link>
             </li>
             <li>
-              <Link href="/services" className="hover:text-white">
+              <Link href="/services" className="inline-block py-1.5 hover:text-white">
                 Services
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-white">
+              <Link href="/about" className="inline-block py-1.5 hover:text-white">
                 About
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-white">
+              <Link href="/contact" className="inline-block py-1.5 hover:text-white">
                 Contact
               </Link>
             </li>
             <li className="pt-3 text-cream/70">
-              <Link href="/careers" className="hover:text-white">
+              <Link href="/careers" className="inline-block py-1.5 hover:text-white">
                 Work with us
               </Link>
             </li>
           </ul>
 
-          <div className="space-y-1 text-bone/85">
+          <div className="text-bone/85">
             <p>
               <a
                 href="mailto:info@steadyhandstudios.co.za"
-                className="hover:text-white"
+                className="inline-block py-1.5 hover:text-white"
               >
                 info@steadyhandstudios.co.za
               </a>
             </p>
             <p>
-              <a href="tel:+27664739575" className="hover:text-white">
+              <a href="tel:+27664739575" className="inline-block py-1.5 hover:text-white">
                 +27 66 473 9575
               </a>
             </p>

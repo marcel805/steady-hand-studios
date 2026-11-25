@@ -44,12 +44,12 @@ export default function SiteHeader() {
       </div>
 
       {/* mobile nav */}
-      <nav className="flex items-center gap-6 overflow-x-auto border-t border-cream/15 px-6 py-2.5 md:hidden">
+      <nav className="flex items-center gap-6 overflow-x-auto border-t border-cream/15 px-6 md:hidden">
         {NAV.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="cap whitespace-nowrap text-sm text-bone/85"
+            className="cap whitespace-nowrap py-3 text-sm text-bone/85"
           >
             {item.label}
           </Link>

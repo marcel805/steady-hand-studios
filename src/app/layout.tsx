@@ -19,7 +19,7 @@ const body = Barlow_Semi_Condensed({
 export const metadata: Metadata = {
   title: "Steady Hand Studios - Fabrication Studio, Johannesburg",
   description:
-    "Steady Hand Studios builds custom fabrication, signage, brand activations and custom home furniture from our Johannesburg workshop - from concept sketch to on-site install.",
+    "Steady Hand Studios designs, builds and installs custom bars, signage, stands and brand activations from our Johannesburg workshop - from concept sketch to on-site install.",
 };
 
 export default function RootLayout({
